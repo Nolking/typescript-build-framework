@@ -130,6 +130,7 @@ var User =
 function () {
   function User(data) {
     this.data = data;
+    this.events = {};
   }
 
   User.prototype.get = function (propName) {
@@ -139,6 +140,8 @@ function () {
   User.prototype.set = function (update) {
     Object.assign(this.data, update);
   };
+
+  User.prototype.on = function (eventName, callback) {};
 
   return User;
 }();
@@ -158,6 +161,12 @@ var user = new User_1.User({
   age: 20
 });
 console.log(user.get('name'));
+console.log(user.get('age'));
+user.set({
+  name: 'newname'
+});
+console.log(user.get('name'));
+console.log(user.get('age'));
 },{"./models/User":"src/models/User.ts"}],"C:/Users/WIN 10/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
