@@ -1,25 +1,7 @@
-import axios, { AxiosResponse } from 'axios'
-import { Eventing } from './Eventing'
-interface UserProps {
-    id?: number,
-    name?: string;
-    age?: number;
-}
 type Callback = () => void;
 
-export class User {
-    public events: Eventing = new Eventing();
-    constructor(private data: UserProps) {
-
-    }
-
-    get(propName: string): (number | string) {
-        return this.data[propName];
-    }
-
-    set(update: UserProps): void {
-        Object.assign(this.data, update)
-    }
+export class Eventing {
+    events: { [key: string]: Callback[]} = {};
 
     on(eventName: string, callback: Callback): void {
         const handlers = this.events[eventName] || [];
