@@ -13,16 +13,25 @@ const user = new User({name: 'new record', age: 0});
 
 // user.set({name: 'NEW NAME', age: 202});
 
-class Person {
-    constructor(public firstName: string, public lastName: string) {}
+// class Person {
+//     constructor(public firstName: string, public lastName: string) {}
     
     
-    get fullName(): string {
-        return `${this.firstName} ${this.lastName}`
-    }    
+//     get fullName(): string {
+//         return `${this.firstName} ${this.lastName}`
+//     }    
     
     
-}
+// }
 
-const person = new Person('firstname', 'lastname');
-console.log(person.fullName)
+// const person = new Person('firstname', 'lastname');
+// console.log(person.fullName)
+
+console.log(user.get('name'));
+
+user.on('change', () => {
+    console.log('somehitng changed')
+})
+
+user.trigger('change'
+)
