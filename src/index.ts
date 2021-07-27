@@ -1,5 +1,5 @@
 import { User } from './models/User';
-
+import { Eventing } from './models/Eventing';
 import axios from 'axios';
 
 // axios.post('http://localhost:3000/users', {
@@ -13,12 +13,16 @@ const user = new User({name: 'new record', age: 0});
 
 // user.set({name: 'NEW NAME', age: 202});
 
-user.save();
+class Person {
+    constructor(public firstName: string, public lastName: string) {}
+    
+    
+    get fullName(): string {
+        return `${this.firstName} ${this.lastName}`
+    }    
+    
+    
+}
 
-user.events.on('change', () => {
-    console.log('change!!!')
-})
-
-user.events.trigger('change')
-
-console.log(user)
+const person = new Person('firstname', 'lastname');
+console.log(person.fullName)
